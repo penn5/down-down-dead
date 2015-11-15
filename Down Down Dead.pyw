@@ -118,7 +118,7 @@ while True:
             dropsy.append(screen.get_height()/20)
             drops += 1
         elif event.type == UPLEVEL:
-            tickrate -= 5
+            tickrate -= 1
             text = LEVELUP
             textpos = text.get_rect()
             textpos.centerx = screen.get_width()/2
@@ -164,7 +164,10 @@ while True:
             gx = dropsx[a]*20
             gy = dropsy[a]*20
         a += 1
-    gy += 0.05 * ((1000.000000/tickrate)/clock.get_time())
+    try:
+        gy += 0.05 * ((1000.000000/tickrate)/clock.get_time())
+    except ZeroDivisionError:
+        gy += 0.05
     if gy >= screen.get_height():
         starttime += 2
         text = ENDGAME
