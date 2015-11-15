@@ -8,7 +8,7 @@ import pygame, random, time
 from pygame.locals import *
 pygame.init()
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
-tickrate = screen.get_height()/75
+tickrate = screen.get_height()/35
 logo = pygame.image.load('Down Down Dead logo.png').convert()
 pygame.display.set_icon(logo)
 pygame.display.set_caption('Down Down Dead!', 'Down Down Dead logo.png')
@@ -162,8 +162,6 @@ while True:
         if [dropsx[a]*20, round(dropsy[a])*20] == [(int((x)/20)*20), (int((y)/20)*20)]:
             gx = dropsx[a]*20
             gy = dropsy[a]*20
-        elif [dropsx[a]*20, round(dropsy[a])*20] == [gx, round(gy/20)*20]:
-            time.sleep(2)
         a += 1
     try:
         gy += 0.05 * ((1000.000000/tickrate)/clock.get_time())
