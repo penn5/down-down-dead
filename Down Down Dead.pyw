@@ -163,6 +163,8 @@ while True:
         if [dropsx[a]*20, round(dropsy[a])*20] == [(int((x)/20)*20), (int((y)/20)*20)]:
             gx = dropsx[a]*20
             gy = dropsy[a]*20
+        elif [dropsx[a]*20, round(dropsy[a])*20] == [gx, round(gy/20)*20]:
+            starttime += 2
         a += 1
     try:
         gy += 0.05 * ((1000.000000/tickrate)/clock.get_time())
