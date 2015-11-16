@@ -122,7 +122,7 @@ while True:
             dropsx.append(random.randint(int(0), int(screen.get_width()/20)))
             dropsy.append(screen.get_height()/20)
             drops += 1
-            counttext = pygame.font.Font(None, 25).render(str(countdown), 0, (50,255,50))
+            counttext = pygame.font.Font(None, 55).render(str(countdown), 0, (50,255,50))
             textpos = text.get_rect()
             screen.blit(counttext, (0,0))
             pygame.display.update()
