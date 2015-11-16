@@ -77,6 +77,7 @@ pygame.time.set_timer(UPLEVEL, 40000)
 activeevent = False
 starttime = time.time()
 while True:
+    pygame.mouse.set_visible(False)
     a = 0
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -141,7 +142,7 @@ while True:
                 time.sleep(2)
                 retry = 0
             elif retry == 0:
-                subtime += 2
+                subtime += 42
                 tickrate -= 2
                 level += 1
                 text = pygame.font.Font(None, 55).render('RETRY: Get More Dots To Pass Level: '+str(level)+' Speed: '+str(tickrate), 0, (50,255,50))
@@ -179,6 +180,7 @@ while True:
 
             if event.gain == 0:
                 while True:
+                    pygame.mouse.set_visible(True)
                     newevent = pygame.event.poll()
                     if newevent.type == QUIT:
                         subtime += 2
@@ -201,7 +203,10 @@ while True:
                         exit()
                     elif newevent.type == ACTIVEEVENT:
                         if newevent.gain == 1:
+                            pygame.mouse.set_visible(False)
                             break
+                    time.sleep(1)
+                    subtime += 1
     screen.fill((0,0,0))
     x,y = pygame.mouse.get_pos()
     pygame.draw.rect(screen, (255, 0, 0), ((int((x)/20)*20), (int((y)/20)*20), 20, 20), 0)
