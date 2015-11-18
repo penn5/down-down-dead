@@ -31,5 +31,3 @@ while True:
                 exit()
             if x > (instrpos.centerx-(instrx/2)) and x < (instrpos.centerx+(instrx/2)) and y > (instrpos.centery-(instry/2)) and y < (instrpos.centery+(instry/2)):
                 import script2
-                pygame.quit()
-                exit()

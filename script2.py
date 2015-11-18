@@ -12,21 +12,29 @@ textpos = text.get_rect()
 textpos.centerx = screen.get_width()/2
 textpos.centery = screen.get_height()/2
 screen.blit(text, textpos)
-height = starty
 text = pygame.font.Font(None, 55).render('Catch the white dots as late as possible', 0, (50,255,50))
 startx, starty = pygame.font.Font(None, 55).size('Catch the white dots as late as possible')
 textpos = text.get_rect()
 textpos.centerx = screen.get_width()/2
 textpos.centery = (screen.get_height()/2)-55
 screen.blit(text, textpos)
-height = starty
 text = pygame.font.Font(None, 55).render('Keep the green dot high', 0, (50,255,50))
 startx, starty = pygame.font.Font(None, 55).size('Keep the green dot high')
 textpos = text.get_rect()
 textpos.centerx = screen.get_width()/2
 textpos.centery = (screen.get_height()/2)-110
 screen.blit(text, textpos)
-height = starty
+text = pygame.font.Font(None, 55).render('Go Back', 0, (50,255,50), (20,20,20))
+startx, starty = pygame.font.Font(None, 55).size('Go Back')
+textpos = text.get_rect()
+textpos.centerx = screen.get_width()/2
+textpos.centery = (screen.get_height()/2)-165
+screen.blit(text, textpos)
 pygame.display.update()
 while True:
-    pygame.event.pump()
+    for event in pygame.event.get():
+        if event.type == MOUSEBUTTONDOWN:
+            x,y = pygame.mouse.get_pos()
+            if x > (textpos.centerx-(startx/2)) and x < (textpos.centerx+(startx/2)) and y > (textpos.centery-(starty/2)) and y < (textpos.centery+(starty/2)):
+                pygame.quit()
+                exit()
