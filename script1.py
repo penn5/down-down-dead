@@ -5,14 +5,16 @@ level = 0
 countdown = 40
 subtime = 0
 a = 0
+bombx = []
 dropsx = []
 dropsy = []
 drops, gy = 0,0
 import pygame, random, time
 from pygame.locals import *
 pygame.init()
+pygame.event.pump()
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
-tickrate = screen.get_height()/35
+tickrate = screen.get_height()/25
 logo = pygame.image.load('Down Down Dead logo.png').convert()
 pygame.display.set_icon(logo)
 pygame.display.set_caption('Down Down Dead!', 'Down Down Dead logo.png')
@@ -123,6 +125,7 @@ while True:
             dropsx.append(random.randint(int(0), int(screen.get_width()/20)))
             dropsy.append(screen.get_height()/20)
             drops += 1
+            bombx.append(random.randint(int(0), int(screen.get_width()/20)))
             counttext = pygame.font.Font(None, 55).render(str(countdown), 0, (50,255,50))
             textpos = text.get_rect()
             screen.blit(counttext, (0,0))
@@ -221,6 +224,30 @@ while True:
             dropsy.pop(a)
             dropsx.pop(a)
             drops -= 1
+        a += 1
+    a=0
+    while a < drops:
+        pygame.draw.rect(screen, (0,0,200), (bombx[a]*20, dropsy[a]*20, 20, 20), 0)
+        dropsy[a] -= 0.025 * ((1000.000000/tickrate)/clock.get_time())
+        if [bombx[a]*20, round(dropsy[a])*20] == [(int((x)/20)*20), (int((y)/20)*20)]:
+            subtime += 2
+            text = ENDGAME
+            textpos = text.get_rect()
+            textpos.centerx = screen.get_width()/2
+            textpos.centery = screen.get_height()/2
+            screen.blit(text, textpos)
+            pygame.display.update()
+            time.sleep(2)
+            screen.fill((0,0,0))
+            text = pygame.font.Font(None, 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
+            textpos = text.get_rect()
+            textpos.centerx = screen.get_width()/2
+            textpos.centery = screen.get_height()/2
+            screen.blit(text, textpos)
+            pygame.display.update()
+            time.sleep(2)
+            pygame.quit()
+            exit()
         a += 1
     try:
         gy += 0.05 * ((1000.000000/tickrate)/clock.get_time())
