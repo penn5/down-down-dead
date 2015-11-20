@@ -15,12 +15,15 @@ pygame.init()
 pygame.event.pump()
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
 tickrate = screen.get_height()/25
-logo = pygame.image.load('Down Down Dead logo.png').convert()
-pygame.display.set_icon(logo)
-pygame.display.set_caption('Down Down Dead!', 'Down Down Dead logo.png')
+try:
+    logo = pygame.image.load('Down Down Dead logo.png').convert()
+    pygame.display.set_icon(logo)
+    pygame.display.set_caption('Down Down Dead!', 'Down Down Dead logo.png')
+except:
+    pass
 gx = random.randint(int(0), int(screen.get_width()))
 pygame.event.pump()
-text = pygame.font.Font(None, 25).render('This game is coded by Penn Mackintosh and distributed under the latest version of the GNU GPL', 0, (50,255,50))
+text = pygame.font.Font(pygame.font.match_font("comicsansms"), 25).render('This game is coded by Penn Mackintosh and distributed under the latest version of the GNU GPL', 0, (50,255,50))
 textpos = text.get_rect()
 textpos.centerx = screen.get_width()/2
 textpos.centery = screen.get_height()/2
@@ -29,14 +32,14 @@ pygame.display.update()
 time.sleep(2)
 pygame.event.pump()
 screen.fill((0,0,0))
-dropcounttext = pygame.font.Font(None, 55).render(str(dotcount), 0, (50,255,50))
-counttext = pygame.font.Font(None, 55).render('40', 0, (50,255,50))
-t1 = pygame.font.Font(None, 55).render('3', 0, (50,255,50))
-t2 = pygame.font.Font(None, 55).render('2', 0, (50,255,50))
-t3 = pygame.font.Font(None, 55).render('1', 0, (50,255,50))
-LEVELUP = pygame.font.Font(None, 55).render('LEVEL UP', 0, (50,255,50))
-ENDGAME = pygame.font.Font(None, 55).render('END GAME', 0, (50,255,50))
-QUITI = pygame.font.Font(None, 55).render('ESCAPE TO QUIT', 0, (50,255,50))
+dropcounttext = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str(dotcount), 0, (50,255,50))
+counttext = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('40', 0, (50,255,50))
+t1 = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('3', 0, (50,255,50))
+t2 = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('2', 0, (50,255,50))
+t3 = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('1', 0, (50,255,50))
+LEVELUP = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('LEVEL UP', 0, (50,255,50))
+ENDGAME = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('END GAME', 0, (50,255,50))
+QUITI = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('ESCAPE TO QUIT', 0, (50,255,50))
 text = QUITI
 textpos = text.get_rect()
 textpos.centerx = screen.get_width()/2
@@ -92,7 +95,7 @@ while True:
             pygame.display.update()
             time.sleep(2)
             screen.fill((0,0,0))
-            text = pygame.font.Font(None, 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
+            text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
             textpos = text.get_rect()
             textpos.centerx = screen.get_width()/2
             textpos.centery = screen.get_height()/2
@@ -100,7 +103,7 @@ while True:
             pygame.display.update()
             time.sleep(2)
             
-            exit()
+            pygame.quit()
         elif event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 subtime += 2
@@ -112,7 +115,7 @@ while True:
                 pygame.display.update()
                 time.sleep(2)
                 screen.fill((0,0,0))
-                text = pygame.font.Font(None, 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
+                text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
                 textpos = text.get_rect()
                 textpos.centerx = screen.get_width()/2
                 textpos.centery = screen.get_height()/2
@@ -120,13 +123,13 @@ while True:
                 pygame.display.update()
                 time.sleep(2)
                 
-                exit()
+                pygame.quit()
         elif event.type == REGEN:
             dropsx.append(random.randint(int(0), int(screen.get_width()/20)))
             dropsy.append(screen.get_height()/20)
             drops += 1
             bombx.append(random.randint(int(0), int(screen.get_width()/20)))
-            counttext = pygame.font.Font(None, 55).render(str(countdown), 0, (50,255,50))
+            counttext = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str(countdown), 0, (50,255,50))
             textpos = text.get_rect()
             screen.blit(counttext, (0,0))
             pygame.display.update()
@@ -136,7 +139,7 @@ while True:
                 subtime += 2
                 tickrate -= 2
                 level += 1
-                text = pygame.font.Font(None, 55).render('Level: '+str(level)+' Speed: '+str(tickrate), 0, (50,255,50))
+                text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('Level: '+str(level)+' Speed: '+str(tickrate), 0, (50,255,50))
                 textpos = text.get_rect()
                 textpos.centerx = screen.get_width()/2
                 textpos.centery = screen.get_height()/2
@@ -148,7 +151,7 @@ while True:
                 subtime += 42
                 tickrate -= 2
                 level += 1
-                text = pygame.font.Font(None, 55).render('RETRY: Get More Dots To Pass Level: '+str(level)+' Speed: '+str(tickrate), 0, (50,255,50))
+                text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('RETRY: Get More Dots To Pass Level: '+str(level)+' Speed: '+str(tickrate), 0, (50,255,50))
                 textpos = text.get_rect()
                 textpos.centerx = screen.get_width()/2
                 textpos.centery = screen.get_height()/2
@@ -166,7 +169,7 @@ while True:
                 pygame.display.update()
                 time.sleep(2)
                 screen.fill((0,0,0))
-                text = pygame.font.Font(None, 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
+                text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
                 textpos = text.get_rect()
                 textpos.centerx = screen.get_width()/2
                 textpos.centery = screen.get_height()/2
@@ -174,11 +177,11 @@ while True:
                 pygame.display.update()
                 time.sleep(2)
                 
-                exit()
-            counttext = pygame.font.Font(None, 55).render('40', 0, (50,255,50))
+                pygame.quit()
+            counttext = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('40', 0, (50,255,50))
             countdown = 40
             dotcount = 0
-            dropcounttext = pygame.font.Font(None, 55).render('0', 0, (50,255,50))
+            dropcounttext = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render('0', 0, (50,255,50))
         elif event.type == ACTIVEEVENT:
 
             if event.gain == 0:
@@ -195,7 +198,7 @@ while True:
                         pygame.display.update()
                         time.sleep(2)
                         screen.fill((0,0,0))
-                        text = pygame.font.Font(None, 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
+                        text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
                         textpos = text.get_rect()
                         textpos.centerx = screen.get_width()/2
                         textpos.centery = screen.get_height()/2
@@ -203,7 +206,7 @@ while True:
                         pygame.display.update()
                         time.sleep(2)
                         
-                        exit()
+                        pygame.quit()
                     elif newevent.type == ACTIVEEVENT:
                         if newevent.gain == 1:
                             pygame.mouse.set_visible(False)
@@ -220,7 +223,7 @@ while True:
             gx = dropsx[a]*20
             gy = dropsy[a]*20
             dotcount += 1
-            dropcounttext = pygame.font.Font(None, 55).render(str(dotcount), 0, (50,255,50))
+            dropcounttext = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str(dotcount), 0, (50,255,50))
             dropsy.pop(a)
             dropsx.pop(a)
             drops -= 1
@@ -239,7 +242,7 @@ while True:
             pygame.display.update()
             time.sleep(2)
             screen.fill((0,0,0))
-            text = pygame.font.Font(None, 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
+            text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
             textpos = text.get_rect()
             textpos.centerx = screen.get_width()/2
             textpos.centery = screen.get_height()/2
@@ -247,7 +250,7 @@ while True:
             pygame.display.update()
             time.sleep(2)
             
-            exit()
+            pygame.quit()
         a += 1
     try:
         gy += 0.05 * ((1000.000000/tickrate)/clock.get_time())
@@ -263,7 +266,7 @@ while True:
         pygame.display.update()
         time.sleep(2)
         screen.fill((0,0,0))
-        text = pygame.font.Font(None, 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
+        text = pygame.font.Font(pygame.font.match_font("comicsansms"), 55).render(str((time.time()-starttime)-subtime), 0, (50,255,50))
         textpos = text.get_rect()
         textpos.centerx = screen.get_width()/2
         textpos.centery = screen.get_height()/2
@@ -271,7 +274,7 @@ while True:
         pygame.display.update()
         time.sleep(2)
         
-        exit()
+        pygame.quit()
     screen.blit(counttext, (0,0))
     screen.blit(dropcounttext, (screen.get_width()-dropcounttext.get_width(),0))
     pygame.draw.rect(screen, (0,255,0), (gx, gy, 20, 20), 0)
