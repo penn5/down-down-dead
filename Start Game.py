@@ -27,7 +27,5 @@ while True:
             x,y = pygame.mouse.get_pos()
             if x > (textpos.centerx-(startx/2)) and x < (textpos.centerx+(startx/2)) and y > (textpos.centery-(starty/2)) and y < (textpos.centery+(starty/2)):
                 import script1
-                pygame.quit()
-                exit()
             if x > (instrpos.centerx-(instrx/2)) and x < (instrpos.centerx+(instrx/2)) and y > (instrpos.centery-(instry/2)) and y < (instrpos.centery+(instry/2)):
                 import script2

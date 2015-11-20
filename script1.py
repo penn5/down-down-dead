@@ -99,7 +99,7 @@ while True:
             screen.blit(text, textpos)
             pygame.display.update()
             time.sleep(2)
-            pygame.quit()
+            
             exit()
         elif event.type == KEYDOWN:
             if event.key == K_ESCAPE:
@@ -119,7 +119,7 @@ while True:
                 screen.blit(text, textpos)
                 pygame.display.update()
                 time.sleep(2)
-                pygame.quit()
+                
                 exit()
         elif event.type == REGEN:
             dropsx.append(random.randint(int(0), int(screen.get_width()/20)))
@@ -173,7 +173,7 @@ while True:
                 screen.blit(text, textpos)
                 pygame.display.update()
                 time.sleep(2)
-                pygame.quit()
+                
                 exit()
             counttext = pygame.font.Font(None, 55).render('40', 0, (50,255,50))
             countdown = 40
@@ -202,7 +202,7 @@ while True:
                         screen.blit(text, textpos)
                         pygame.display.update()
                         time.sleep(2)
-                        pygame.quit()
+                        
                         exit()
                     elif newevent.type == ACTIVEEVENT:
                         if newevent.gain == 1:
@@ -246,7 +246,7 @@ while True:
             screen.blit(text, textpos)
             pygame.display.update()
             time.sleep(2)
-            pygame.quit()
+            
             exit()
         a += 1
     try:
@@ -270,7 +270,7 @@ while True:
         screen.blit(text, textpos)
         pygame.display.update()
         time.sleep(2)
-        pygame.quit()
+        
         exit()
     screen.blit(counttext, (0,0))
     screen.blit(dropcounttext, (screen.get_width()-dropcounttext.get_width(),0))

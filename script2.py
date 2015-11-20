@@ -36,5 +36,4 @@ while True:
         if event.type == MOUSEBUTTONDOWN:
             x,y = pygame.mouse.get_pos()
             if x > (textpos.centerx-(startx/2)) and x < (textpos.centerx+(startx/2)) and y > (textpos.centery-(starty/2)) and y < (textpos.centery+(starty/2)):
-                pygame.quit()
                 exit()
