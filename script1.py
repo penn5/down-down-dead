@@ -25,6 +25,34 @@ except:
     pass
 gx = random.randint(int(0), int(screen.get_width()))
 pygame.event.pump()
+
+
+text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render('Press 1, 2 or 3 to select difficulty', 0, (50, 255, 50))
+textpos = text.get_rect()
+textpos.centerx = screen.get_width() / 2
+textpos.centery = screen.get_height() / 2
+screen.blit(text, textpos)
+pygame.display.update()
+try:
+    while True:
+        pygame.mouse.set_visible(False)
+        a = 0
+        for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_1:
+                    tickrate = tickrate / 2
+                    print "1"
+                    raise SystemExit
+                elif event.key == K_2:
+                    print "2"
+                    raise SystemExit
+                elif event.key == K_3:
+                    print "3"
+                    tickrate = tickrate * 2
+                    raise SystemExit
+except SystemExit:
+    pass
+
 text = pygame.font.Font(pygame.font.match_font('comicsansms'), 25).render('This game is coded by Penn Mackintosh and distributed under the latest version of the GNU GPL', 0, (50, 255, 50))
 textpos = text.get_rect()
 textpos.centerx = screen.get_width() / 2
