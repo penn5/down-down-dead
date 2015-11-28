@@ -40,7 +40,7 @@ try:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == K_1:
-                    tickrate = tickrate / 2
+                    tickrate = tickrate / 3
                     print "1"
                     raise SystemExit
                 elif event.key == K_2:
