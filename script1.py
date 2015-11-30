@@ -33,14 +33,14 @@ textpos.centerx = screen.get_width() / 2
 textpos.centery = screen.get_height() / 2
 screen.blit(text, textpos)
 pygame.display.update()
+pygame.mouse.set_visible(False)
 try:
     while True:
-        pygame.mouse.set_visible(False)
         a = 0
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == K_1:
-                    tickrate = tickrate / 3
+                    tickrate = tickrate * 3
                     print "1"
                     raise SystemExit
                 elif event.key == K_2:
@@ -48,10 +48,10 @@ try:
                     raise SystemExit
                 elif event.key == K_3:
                     print "3"
-                    tickrate = tickrate * 2
+                    tickrate = tickrate / 2
                     raise SystemExit
 except SystemExit:
-    pass
+    screen.fill((0,0,0))
 
 text = pygame.font.Font(pygame.font.match_font('comicsansms'), 25).render('This game is coded by Penn Mackintosh and distributed under the latest version of the GNU GPL', 0, (50, 255, 50))
 textpos = text.get_rect()
