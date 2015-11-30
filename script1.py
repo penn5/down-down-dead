@@ -41,13 +41,10 @@ try:
             if event.type == KEYDOWN:
                 if event.key == K_1:
                     tickrate = tickrate * 3
-                    print "1"
                     raise SystemExit
                 elif event.key == K_2:
-                    print "2"
                     raise SystemExit
                 elif event.key == K_3:
-                    print "3"
                     tickrate = tickrate / 2
                     raise SystemExit
 except SystemExit:
@@ -342,5 +339,6 @@ try:
         pygame.display.update()
 
 except SystemExit:
+    import StartGame
     pass
 
