@@ -1,3 +1,5 @@
+import os
+os.environ['SDL_VIDEO_WINDOW_POS'] = "0, 0"
 import pygame
 import random
 import time

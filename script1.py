@@ -1,3 +1,5 @@
+import os
+os.environ['SDL_VIDEO_WINDOW_POS'] = "0, 0"
 retry = 0
 dotcount = 0
 level = 0
@@ -15,8 +17,8 @@ import math
 from pygame.locals import *
 pygame.init()
 pygame.event.pump()
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-tickrate = (math.ceil(screen.get_height() / 25 / 2) + 0.5) * 2
+screen = pygame.display.set_mode((1366, 768), pygame.NOFRAME)
+tickrate = 31
 try:
     logo = pygame.image.load('Down Down Dead logo.png').convert()
     pygame.display.set_icon(logo)
