@@ -1,13 +1,15 @@
-import os
-os.environ['SDL_VIDEO_WINDOW_POS'] = "0, 0"
 import pygame
 import random
 import time
 import sys
 from pygame.locals import *
 pygame.init()
+import os
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((pygame.display.Info().current_w-1366)/2, (pygame.display.Info().current_h-768)/2)
+pygame.quit()
+pygame.init()
 pygame.event.pump()
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((1366, 768), pygame.NOFRAME)
 try:
     logo = pygame.image.load('Down Down Dead logo.png').convert()
     pygame.display.set_icon(logo)

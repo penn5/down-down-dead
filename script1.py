@@ -1,5 +1,3 @@
-import os
-os.environ['SDL_VIDEO_WINDOW_POS'] = "0, 0"
 retry = 0
 dotcount = 0
 level = 0
@@ -15,6 +13,10 @@ import random
 import time
 import math
 from pygame.locals import *
+pygame.init()
+import os
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((pygame.display.Info().current_w-1366)/2, (pygame.display.Info().current_h-768)/2)
+pygame.quit()
 pygame.init()
 pygame.event.pump()
 screen = pygame.display.set_mode((1366, 768), pygame.NOFRAME)
@@ -43,11 +45,14 @@ try:
             if event.type == KEYDOWN:
                 if event.key == K_1:
                     tickrate = tickrate * 3
+                    diff = 0.5
                     raise SystemExit
                 elif event.key == K_2:
+                    diff = 1
                     raise SystemExit
                 elif event.key == K_3:
                     tickrate = tickrate / 2
+                    diff = 2
                     raise SystemExit
 except SystemExit:
     screen.fill((0,0,0))
@@ -125,7 +130,7 @@ try:
                 pygame.display.update()
                 time.sleep(2)
                 screen.fill((0, 0, 0))
-                text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime), 0, (50, 255, 50))
+                text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime/diff), 0, (50, 255, 50))
                 textpos = text.get_rect()
                 textpos.centerx = screen.get_width() / 2
                 textpos.centery = screen.get_height() / 2
@@ -146,7 +151,7 @@ try:
                     pygame.display.update()
                     time.sleep(2)
                     screen.fill((0, 0, 0))
-                    text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime), 0, (50, 255, 50))
+                    text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime/diff), 0, (50, 255, 50))
                     textpos = text.get_rect()
                     textpos.centerx = screen.get_width() / 2
                     textpos.centery = screen.get_height() / 2
@@ -201,7 +206,7 @@ try:
                     pygame.display.update()
                     time.sleep(2)
                     screen.fill((0, 0, 0))
-                    text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime), 0, (50, 255, 50))
+                    text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime/diff), 0, (50, 255, 50))
                     textpos = text.get_rect()
                     textpos.centerx = screen.get_width() / 2
                     textpos.centery = screen.get_height() / 2
@@ -230,7 +235,7 @@ try:
                             pygame.display.update()
                             time.sleep(2)
                             screen.fill((0, 0, 0))
-                            text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime), 0, (50, 255, 50))
+                            text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime/diff), 0, (50, 255, 50))
                             textpos = text.get_rect()
                             textpos.centerx = screen.get_width() / 2
                             textpos.centery = screen.get_height() / 2
@@ -295,7 +300,7 @@ try:
                 pygame.display.update()
                 time.sleep(2)
                 screen.fill((0, 0, 0))
-                text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime), 0, (50, 255, 50))
+                text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime/diff), 0, (50, 255, 50))
                 textpos = text.get_rect()
                 textpos.centerx = screen.get_width() / 2
                 textpos.centery = screen.get_height() / 2
@@ -321,7 +326,7 @@ try:
             pygame.display.update()
             time.sleep(2)
             screen.fill((0, 0, 0))
-            text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime), 0, (50, 255, 50))
+            text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render(str(time.time() - starttime - subtime/diff), 0, (50, 255, 50))
             textpos = text.get_rect()
             textpos.centerx = screen.get_width() / 2
             textpos.centery = screen.get_height() / 2
@@ -333,10 +338,7 @@ try:
             raise SystemExit
         screen.blit(counttext, (0, 0))
         screen.blit(dropcounttext, (screen.get_width() - dropcounttext.get_width(), 0))
-        pygame.draw.rect(screen, (0, 255, 0), (gx,
-         gy,
-         20,
-         20), 0)
+        pygame.draw.rect(screen, (0, 255, 0), (gx, gy, 20, 20), 0)
         clock.tick(0)
         pygame.display.update()
 
