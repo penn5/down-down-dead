@@ -7,11 +7,8 @@ from pygame.locals import *
 pygame.init()
 import os
 screen=pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-<<<<<<< HEAD
 time.sleep(1)
 (x,y) = screen.get_size()
-=======
->>>>>>> 72bf8881cb52c7bc0456aa51ad1166c85b6621bf
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((screen.get_size()[0]-1366)/2, (screen.get_size()[1]-768)/2)
 
 pygame.quit()
