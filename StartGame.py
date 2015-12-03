@@ -8,8 +8,8 @@ import os
 pygame.init()
 os.environ['SDL_VIDEO_WINDOW_POS'] = "0, 0"
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
-xoff = screen.get_width() - 1366
-yoff = screen.get_height() - 768
+xoff = abs(screen.get_width() - 1366)/2
+yoff = abs(screen.get_height() - 768)/2
 
 pygame.font.init()
 text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render('Start', 0, (50, 255, 50), (20, 20, 20))

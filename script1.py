@@ -17,8 +17,8 @@ import os
 pygame.init()
 os.environ['SDL_VIDEO_WINDOW_POS'] = "0, 0"
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
-xoff = screen.get_width() - 1366
-yoff = screen.get_height() - 768
+xoff = abs(screen.get_width() - 1366)/2
+yoff = abs(screen.get_height() - 768)/2
 tickrate = 31
 try:
     logo = pygame.image.load('Down Down Dead logo.png').convert()
