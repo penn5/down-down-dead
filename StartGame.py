@@ -9,19 +9,20 @@ import os
 screen=pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 time.sleep(1)
 (x,y) = screen.get_size()
-os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((screen.get_size()[0]-1366)/2, (screen.get_size()[1]-768)/2)
-
-pygame.quit()
-pygame.init()
-
-pygame.event.pump()
 tx=1366
 ty=768
 if x < tx:
     tx=x
 if y < ty:
     ty=y
-screen = pygame.display.set_mode((tx, ty), pygame.NOFRAME)
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((x-1366)/2, (y-768)/2)
+
+pygame.quit()
+pygame.init()
+
+pygame.event.pump()
+
+screen = pygame.display.set_mode((tx, ty),pygame.NOFRAME)
 
 pygame.font.init()
 text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render('Start', 0, (50, 255, 50), (20, 20, 20))
