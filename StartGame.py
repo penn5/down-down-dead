@@ -6,14 +6,22 @@ import sys
 from pygame.locals import *
 pygame.init()
 import os
-os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((pygame.display.Info().current_w-1366)/2, (pygame.display.Info().current_h-768)/2)
+screen=pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+time.sleep(1)
+(x,y) = screen.get_size()
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((screen.get_size()[0]-1366)/2, (screen.get_size()[1]-768)/2)
 
 pygame.quit()
 pygame.init()
 
 pygame.event.pump()
-
-screen = pygame.display.set_mode((1366, 768), pygame.NOFRAME)
+tx=1366
+ty=768
+if x < tx:
+    tx=x
+if y < ty:
+    ty=y
+screen = pygame.display.set_mode((tx, ty), pygame.NOFRAME)
 
 pygame.font.init()
 text = pygame.font.Font(pygame.font.match_font('comicsansms'), 55).render('Start', 0, (50, 255, 50), (20, 20, 20))
@@ -43,14 +51,14 @@ while True:
                 try:
                     import script1
                 except Exception:
-                    raise RuntimeError('Programmer Error - script1 exited with an error - please report to penn.mackintosh@gmail.com')
+                    pass
                 pygame.quit()
                 sys.exit()
             if x > instrpos.centerx - instrx / 2 and x < instrpos.centerx + instrx / 2 and y > instrpos.centery - instry / 2 and y < instrpos.centery + instry / 2:
                 try:
                     import script2
                 except Exception:
-                    raise RuntimeError('Programmer Error - script2 exited with an error - please report to penn.mackintosh@gmail.com')
+                    pass
                 pygame.quit()
                 sys.exit()
         if event.type == KEYDOWN:

@@ -5,10 +5,19 @@ import sys
 from pygame.locals import *
 pygame.init()
 import os
-os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((pygame.display.Info().current_w-1366)/2, (pygame.display.Info().current_h-768)/2)
+screen=pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+time.sleep(1)
+(x,y)=screen.get_size()
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % ((screen.get_size()[0]-1366)/2, (screen.get_size()[1]-768)/2)
 pygame.quit()
 pygame.init()
 pygame.event.pump()
+tx=1366
+ty=768
+if x < tx:
+    tx=x
+if y < ty:
+    ty=y
 screen = pygame.display.set_mode((1366, 768), pygame.NOFRAME)
 try:
     logo = pygame.image.load('Down Down Dead logo.png').convert()
@@ -52,5 +61,4 @@ try:
 
 
 except SystemExit:
-    import script1;sys.exit()
-
+    pass
